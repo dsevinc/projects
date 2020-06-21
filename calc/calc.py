@@ -25,6 +25,7 @@ class Calculator:
         self.multiply_button = Button(master, text="x", command=lambda: self.multiply(self.input))
         self.divide_button = Button(master, text="÷", command=lambda: self.divide(self.input))
         self.sin_button = Button(master, text="sin", command=lambda: self.sinButton(self.input))
+        self.cos_button = Button(master, text="cos", command=lambda: self.cosButton(self.input))
 
         #gui layout
         self.label.grid(row=0, column=0, sticky=W)
@@ -63,8 +64,12 @@ class Calculator:
         self.update()
 
     def sinButton(self,input):
-        self.total = math.sin(self.input)
-        self.update() 
+        self.total = math.sin(input)
+        self.update()
+
+    def cosButton(self,input):
+        self.total = math.sin(input)
+        self.update()
 
     def validate(self, new_text):
         print(new_text)
