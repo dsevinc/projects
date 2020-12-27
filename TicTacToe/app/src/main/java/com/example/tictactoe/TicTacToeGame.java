@@ -1,5 +1,7 @@
 package com.example.tictactoe;
 
+import android.util.Log;
+
 /**
  * The class <b>TicTacToeGame</b> is the
  * class that implements the Tic Tac Toe Game.
@@ -11,9 +13,9 @@ package com.example.tictactoe;
  * @author Deniz Sevinc
  */
 public class TicTacToeGame {
+    private static final String TAG = "TicTacToeGame";
 
-// FINISH THE VARIABLE DECLARATION
-    /**
+     /**
      * The board of the game, stored as a one dimension array.
      */
     private CellValue[] board;
@@ -55,7 +57,6 @@ public class TicTacToeGame {
      */
     public TicTacToeGame(){
 
-        // YOUR CODE HERE
         board = new CellValue[9];
         for (int i=0; i<9; i++) {
             board[i] = CellValue.EMPTY;
@@ -78,7 +79,6 @@ public class TicTacToeGame {
      */
     public TicTacToeGame(int lines, int columns){
 
-        // YOUR CODE HERE
         int numCells = lines*columns;
         board = new CellValue[numCells];
         for (int i=0; i<numCells; i++) {
@@ -89,8 +89,6 @@ public class TicTacToeGame {
         this.columns = columns;
         gameState = GameState.PLAYING;
         sizeWin = 3;
-
-
     }
 
     /**
@@ -106,7 +104,6 @@ public class TicTacToeGame {
      */
     public TicTacToeGame(int lines, int columns, int sizeWin){
 
-        // YOUR CODE HERE
         int numCells = lines*columns;
         board = new CellValue[numCells];
         for (int i=0; i<numCells; i++) {
@@ -126,7 +123,6 @@ public class TicTacToeGame {
      */
     public int getLines(){
 
-        // YOUR CODE HERE
         return lines;
 
     }
@@ -138,7 +134,6 @@ public class TicTacToeGame {
      */
     public int getColumns(){
 
-        // YOUR CODE HERE
         return columns;
 
     }
@@ -150,7 +145,6 @@ public class TicTacToeGame {
      */
     public int getLevel(){
 
-        // YOUR CODE HERE
         return level;
 
     }
@@ -162,7 +156,6 @@ public class TicTacToeGame {
      */
     public int getSizeWin(){
 
-        // YOUR CODE HERE
         return sizeWin;
 
     }
@@ -174,7 +167,6 @@ public class TicTacToeGame {
      */
     public GameState getGameState(){
 
-        // YOUR CODE HERE
         return gameState;
 
     }
@@ -191,7 +183,6 @@ public class TicTacToeGame {
      */
     public CellValue nextCellValue(){
 
-        // YOUR CODE HERE
         if (level == 0) {
             return CellValue.X;
         }
@@ -214,11 +205,10 @@ public class TicTacToeGame {
      */
     public CellValue valueAt(int i) {
 
-        // YOUR CODE HERE
         if ((i >= 0) || i < this.board.length) {
             return this.board[i];
         } else {
-            System.out.println("Error: array index out of bounds or invalid");
+            Log.e(TAG, "Error: array index out of bounds or invalid");
             return this.board[0];
         }
 
@@ -244,18 +234,10 @@ public class TicTacToeGame {
      */
     public void play(int i) {
 
-        // YOUR CODE HERE
         if ((i >= 0) || i < this.board.length) {
             if (this.board[i] != CellValue.EMPTY) {
-                System.out.println("This cell has already been played");
+                Log.w(TAG,"This cell has already been played");
             } else {
-                // if (this.level % 2 == 0) {
-                // 	//X-move
-                // 	this.board[i] = CellValue.X;
-                // } else {
-                // 	//O-move
-                // 	this.board[i] = CellValue.O;
-                // }
                 this.board[i] = nextCellValue();
                 this.level++;
                 setGameState(i);
@@ -281,8 +263,6 @@ public class TicTacToeGame {
      *  the index of the cell in the array board that has just
      * been set
      */
-
-
     private void setGameState(int i){
 
         // YOUR CODE HERE
@@ -301,43 +281,43 @@ public class TicTacToeGame {
                 if (board[i] == CellValue.O) {
                     //if player O wins, print a message and change the gameState variable of this class
                     this.gameState = GameState.OWIN;
-                    System.out.print(this.toString());
-                    System.out.println("Result: OWIN");
+                    Log.i(TAG,this.toString());
+                    Log.i(TAG,"Result: OWIN");
                 } else if (board[i] == CellValue.X) {
                     //if player X wins, print a message and change the gameState variable of this class
                     this.gameState = GameState.XWIN;
-                    System.out.print(this.toString());
-                    System.out.println("Result: XWIN");
+                    Log.i(TAG,this.toString());
+                    Log.i(TAG,"Result: XWIN");
                 }
             }
             if(checkCols(temp2d)) {
                 //check if the last player won in any column
                 if (board[i] == CellValue.O) {
                     this.gameState = GameState.OWIN;
-                    System.out.print(this.toString());
-                    System.out.println("Result: OWIN");
+                    Log.i(TAG,this.toString());
+                    Log.i(TAG,"Result: OWIN");
                 } else if (board[i] == CellValue.X) {
                     this.gameState = GameState.XWIN;
-                    System.out.print(this.toString());
-                    System.out.println("Result: XWIN");
+                    Log.i(TAG,this.toString());
+                    Log.i(TAG,"Result: XWIN");
                 }
             }
             if(checkDiags(temp2d,board[i])) {
                 //check if the last player won in any diagonal
                 if (board[i] == CellValue.O) {
                     this.gameState = GameState.OWIN;
-                    System.out.print(this.toString());
-                    System.out.println("Result: OWIN");
+                    Log.i(TAG,this.toString());
+                    Log.i(TAG,"Result: OWIN");
                 } else if (board[i] == CellValue.X) {
                     this.gameState = GameState.XWIN;
-                    System.out.print(this.toString());
-                    System.out.println("Result: XWIN");
+                    Log.i(TAG,this.toString());
+                    Log.i(TAG,"Result: XWIN");
                 }
             }
             if(checkDraw()) {
-                //chame game state if game is a draw
-                System.out.print("Result: DRAWN");
-                System.out.println(this.toString());
+                //change game state if game is a draw
+                Log.i(TAG,"Result: DRAWN");
+                Log.i(TAG,this.toString());
                 this.gameState = GameState.DRAW;
             }
         }
@@ -477,7 +457,7 @@ public class TicTacToeGame {
             rowCtr++;
         }
 
-        //this block checks for non-central diagonals (i.e. if the diagonal does not intersect the center of the board)
+        //checks for non-central diagonals (i.e. if the diagonal does not intersect the center of the board)
         int gridSize = Math.min(columns,lines); //if the grid is not a square, the max diagonal size should be the smaller dimension
         for (int y = sizeWin-gridSize; y < gridSize-sizeWin; y++) { //row 0 to row lines-1
             int fCount = 0; //forward diagonal counter
@@ -504,7 +484,7 @@ public class TicTacToeGame {
             }
         }
 
-        //this block checks for a win in reverse diagonals (including non-central)
+        //checks for a win in reverse diagonals (including non-central)
         for (int z = sizeWin-gridSize; z < gridSize - sizeWin+1; z++) {
             int rCount = 0; //counter in reverse diagonal direction
             int firstR = Math.max(0,z); //if z is a negative integer, start at 0 to avoid going out of array boundary
@@ -535,11 +515,9 @@ public class TicTacToeGame {
      * @return
      *  String representation of the game
      */
-
     public String toString(){
 
-        // YOUR CODE HERE
-        String output = "";
+        String output = "\n";
         int cellIndex = 0;
         for (int j = 0; j < this.lines; j++) {
             for (int k = 0; k < this.columns; k++) {
@@ -565,5 +543,4 @@ public class TicTacToeGame {
         }
         return output;
     }
-
 }

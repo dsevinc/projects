@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button button00,button01,button02,button10,button11,button12,button20,button21,button22;
+    Button button0,button1,button2,button3,button4,button5,button6,button7,button8;
     Button newGameButton;
     TextView playerTurnText;
     TextView gameStatusText;
@@ -19,15 +19,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button00 = (Button) findViewById(R.id.button00);
-        button01 = (Button) findViewById(R.id.button01);
-        button02 = (Button) findViewById(R.id.button02);
-        button10 = (Button) findViewById(R.id.button10);
-        button11 = (Button) findViewById(R.id.button11);
-        button12 = (Button) findViewById(R.id.button12);
-        button20 = (Button) findViewById(R.id.button20);
-        button21 = (Button) findViewById(R.id.button21);
-        button22 = (Button) findViewById(R.id.button22);
+        button0 = (Button) findViewById(R.id.button0);
+        button1 = (Button) findViewById(R.id.button1);
+        button2 = (Button) findViewById(R.id.button2);
+        button3 = (Button) findViewById(R.id.button3);
+        button4 = (Button) findViewById(R.id.button4);
+        button5 = (Button) findViewById(R.id.button5);
+        button6 = (Button) findViewById(R.id.button6);
+        button7 = (Button) findViewById(R.id.button7);
+        button8 = (Button) findViewById(R.id.button8);
         newGameButton = (Button) findViewById(R.id.newGameButton);
 
         playerTurnText = (TextView) findViewById(R.id.playerTurnText);
@@ -37,17 +37,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         newGameButton.setOnClickListener(this);
 
-        button00.setOnClickListener(this);
-        button01.setOnClickListener(this);
-        button02.setOnClickListener(this);
+        button0.setOnClickListener(this);
+        button1.setOnClickListener(this);
+        button2.setOnClickListener(this);
 
-        button10.setOnClickListener(this);
-        button11.setOnClickListener(this);
-        button12.setOnClickListener(this);
+        button3.setOnClickListener(this);
+        button4.setOnClickListener(this);
+        button5.setOnClickListener(this);
 
-        button20.setOnClickListener(this);
-        button21.setOnClickListener(this);
-        button22.setOnClickListener(this);
+        button6.setOnClickListener(this);
+        button7.setOnClickListener(this);
+        button8.setOnClickListener(this);
     }
 
     @Override
@@ -63,73 +63,65 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 move = "X";
             }
             switch (view.getId()) {
-                case R.id.button00:
+                case R.id.button0:
                     game.play(0);
-                    button00.setText(move);
+                    button0.setText(move);
                     break;
-                case R.id.button01:
+                case R.id.button1:
                     game.play(1);
-                    button01.setText(move);
+                    button1.setText(move);
                     break;
-                case R.id.button02:
+                case R.id.button2:
                     game.play(2);
-                    button02.setText(move);
+                    button2.setText(move);
                     break;
-                case R.id.button10:
+                case R.id.button3:
                     game.play(3);
-                    button10.setText(move);
+                    button3.setText(move);
                     break;
-                case R.id.button11:
+                case R.id.button4:
                     game.play(4);
-                    button11.setText(move);
+                    button4.setText(move);
                     break;
-                case R.id.button12:
+                case R.id.button5:
                     game.play(5);
-                    button12.setText(move);
+                    button5.setText(move);
                     break;
-                case R.id.button20:
+                case R.id.button6:
                     game.play(6);
-                    button20.setText(move);
+                    button6.setText(move);
                     break;
-                case R.id.button21:
+                case R.id.button7:
                     game.play(7);
-                    button21.setText(move);
+                    button7.setText(move);
                     break;
-                case R.id.button22:
+                case R.id.button8:
                     game.play(8);
-                    button22.setText(move);
+                    button8.setText(move);
                     break;
                 case R.id.newGameButton:
-                    game = new TicTacToeGame();
-                    button00.setText("");
-                    button01.setText("");
-                    button02.setText("");
-                    button10.setText("");
-                    button11.setText("");
-                    button12.setText("");
-                    button20.setText("");
-                    button21.setText("");
-                    button22.setText("");
-                    playerTurnText.setText(R.string.xTurn);
-
+                    resetGame();
             }
         } else {
             switch (view.getId()) {
                 case R.id.newGameButton:
-                    game = new TicTacToeGame();
-                    button00.setText("");
-                    button01.setText("");
-                    button02.setText("");
-                    button10.setText("");
-                    button11.setText("");
-                    button12.setText("");
-                    button20.setText("");
-                    button21.setText("");
-                    button22.setText("");
-                    playerTurnText.setText(R.string.xTurn);
-
+                    resetGame();
             }
         }
         gameStatusText.setText(game.getGameState().name());
+    }
+
+    public void resetGame() {
+        game = new TicTacToeGame();
+        button0.setText("");
+        button1.setText("");
+        button2.setText("");
+        button3.setText("");
+        button4.setText("");
+        button5.setText("");
+        button6.setText("");
+        button7.setText("");
+        button8.setText("");
+        playerTurnText.setText(R.string.xTurn);
     }
 }
