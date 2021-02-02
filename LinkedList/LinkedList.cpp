@@ -79,16 +79,19 @@ class LinkedList {
             return -1;
         }
         void printContents() {
-            Node* temp = head;
-            while (temp!=NULL && temp->next!=NULL) {
+            Node* temp = head->next;
+            int i = 0;
+            while (temp!=NULL && i<size) {
                 cout << temp->val << "\n";
                 temp = temp->next;
+                i++;
             }
         }
         int getSize() {
             return size;
         }
         LinkedList() {
+            size=0;
             head = new Node;
             head->previous = head->next = head;
         }
